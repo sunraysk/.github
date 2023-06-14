@@ -1,0 +1,35 @@
+name: Makefile CI
+
+on:
+  push:
+    branches: [ $default-branch ]
+  pull_request:
+    branches: [ $default-branch ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    env:
+      URL: https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
+      OUTPUT_PATH: nuget.exe
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: configure
+      id: configure
+      run: make setup
+
+    - name: Run Unit Test
+      id: unittest
+      run: make unittest
+      
+    - name: Check for failure
+      if: steps.unittest.outcome != 'Success'
+      run: exit 1    
+
+    - name: Run Package Build
+      id: packagebuild
+      run: make package
+    
