@@ -1,5 +1,5 @@
 {
-    "name": "Build Make CI workflow",
+    "name": "Makefile CI",
     "description": "Sunraysk Organization CI starter workflow.",
     "iconName": "example-icon",
     "filePatterns": [
