@@ -4,6 +4,7 @@
     "iconName": "makefile",
     "categories": ["Continuous integration", "Makefile"],
     "filePatterns": [
-        "^Makefile"
+        "^Makefile",
+        "package.json$"
     ]
 }
